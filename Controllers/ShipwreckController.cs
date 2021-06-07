@@ -12,14 +12,14 @@ namespace SneakersApi.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class ShipwreckController : ControllerBase
+    public class ShipWreckController : ControllerBase
     {
         private readonly IMongoCollection<Shipwreck> _shipwreckCollection;
 
-        public ShipwreckController(IMongoClient client)
+        public ShipWreckController(IMongoClient client)
         {
             var database = client.GetDatabase("sample_geospatial");
-            _shipwreckCollection = database.GetCollection<Models.Shipwreck>("shipwrecks");
+            _shipwreckCollection = database.GetCollection<Shipwreck>("shipwrecks");
         }
 
         [HttpGet]
