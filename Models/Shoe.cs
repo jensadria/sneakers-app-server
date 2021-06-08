@@ -10,7 +10,7 @@ namespace SneakersApi.Models
     public class Shoe
     {
         [BsonId]
-        //[BsonRepresentation(BsonType.ObjectId)]
+        [BsonRepresentation(BsonType.ObjectId)]
         public ObjectId Id { get; set; }
 
         [BsonElement("brand")]

@@ -25,7 +25,21 @@ namespace SneakersApi.Controllers
         [HttpGet]
         public IEnumerable<Shoe> Get()
         {
-            return _shoeCollection.Find(s => s.Brand == "Asics").ToList();
+            return _shoeCollection.Find(shoe => true).ToList();
+        }
+
+        [HttpPost]
+        public Shoe Post(Shoe shoe)
+        {
+            _shoeCollection.InsertOne(shoe);
+            return shoe;
+        }
+
+
+        [HttpDelete]
+        public void Delete(ObjectId id)
+        {
+            _shoeCollection.DeleteOne(shoe => shoe.Id == id);
         }
     }
 }
