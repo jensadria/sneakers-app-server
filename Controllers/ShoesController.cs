@@ -23,9 +23,9 @@ namespace SneakersApi.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Shoe> Get()
+        public async Task<IEnumerable<Shoe>> Get()
         {
-            return _shoeCollection.Find(shoe => true).ToList();
+            return await _shoeCollection.Find(shoe => true).ToListAsync();
         }
 
         [HttpPost]
