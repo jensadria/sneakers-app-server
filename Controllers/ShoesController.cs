@@ -28,6 +28,12 @@ namespace SneakersApi.Controllers
             return await _shoeCollection.Find(shoe => true).ToListAsync();
         }
 
+        [HttpGet("{id}", Name = "GetShoe")]
+        public Shoe GetShoe(string id)
+        {
+            return _shoeCollection.Find(shoe => shoe.Id == id).First();
+        }
+
         [HttpPost]
         public Shoe Post(Shoe shoe)
         {
@@ -37,9 +43,16 @@ namespace SneakersApi.Controllers
 
 
         [HttpDelete]
-        public void Delete(ObjectId id)
+        public void Delete(string id)
         {
             _shoeCollection.DeleteOne(shoe => shoe.Id == id);
+        }
+
+        [HttpPut]
+        public Shoe UpdateShoe(Shoe shoe)
+        {
+            _shoeCollection.ReplaceOne(b => b.Id == shoe.Id, shoe);
+            return shoe;
         }
     }
 }
